@@ -28,8 +28,10 @@ pipeline {
         }
          stage('API test') {
             steps {
-               git branch: 'main', url: 'https://github.com/rcarauta/tasks-api-test.git'
-               sh 'mvn clean test'
+                dir('api-test') {
+                    git branch: 'main', url: 'https://github.com/rcarauta/tasks-api-test.git'
+                    sh 'mvn clean test'
+                }
             }
         }
     }
